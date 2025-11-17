@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickMeet - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .status-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .status-box.error {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        .status-box.success {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .demo-section {
+            margin: 30px 0;
+        }
+        .user-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .user-info h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .user-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+        }
+        .btn-action {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-like {
+            background: #28a745;
+            color: white;
+        }
+        .btn-skip {
+            background: #dc3545;
+            color: white;
+        }
+        .btn-action:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 QuickMeet</h1>
+            <p>Connect with people around the world</p>
+            <div class="nav">
+                <a href="#home" class="nav-btn" onclick="showSection('home')">Home</a>
+                <a href="#demo" class="nav-btn" onclick="showSection('demo')">Live Demo</a>
+                <a href="#setup" class="nav-btn" onclick="showSection('setup')">Setup Guide</a>
+            </div>
+        </header>
+
+        <!-- Home Section -->
+        <div id="home" class="section">
+            <div class="card">
+                <h2>Welcome to QuickMeet!</h2>
+                <p>This is a demo page showing what QuickMeet looks like. The full application requires Node.js to run.</p>
+                
+                <div class="status-box">
+                    <strong>⚠️ Current Status:</strong><br>
+                    This is a static demo. To run the full app with all features (messaging, video calls, matching), you need to:
+                    <ol style="margin-left: 20px; margin-top: 10px;">
+                        <li>Install Node.js</li>
+                        <li>Install dependencies</li>
+                        <li>Set up MongoDB</li>
+                        <li>Run the development server</li>
+                    </ol>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🔍 Discovery</h3>
+                        <p>Swipe through profiles and find your perfect match</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💬 Messaging</h3>
+                        <p>Real-time chat with your matches</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📹 Video Calls</h3>
+                        <p>Connect face-to-face with video calls</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌍 Global</h3>
+                        <p>Connect with people from any country</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Section -->
+        <div id="demo" class="section" style="display: none;">
+            <div class="card">
+                <h2>Live Demo - Discovery Page</h2>
+                <p>This is how the discovery/swipe feature looks:</p>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar">A</div>
+                <div class="user-info">
+                    <h3>Alex, 28</h3>
+                    <p>📍 United States</p>
+                    <p>Love traveling and meeting new people!</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-action btn-skip" onclick="skipUser()">✕</button>
+                    <button class="btn-action btn-like" onclick="likeUser()">♥</button>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar">S</div>
+                <div class="user-info">
+                    <h3>Sarah, 25</h3>
+                    <p>📍 United Kingdom</p>
+                    <p>Photography enthusiast and coffee lover ☕</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-action btn-skip" onclick="skipUser()">✕</button>
+                    <button class="btn-action btn-like" onclick="likeUser()">♥</button>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar">M</div>
+                <div class="user-info">
+                    <h3>Mike, 30</h3>
+                    <p>📍 Canada</p>
+                    <p>Software developer and hiking enthusiast 🏔️</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-action btn-skip" onclick="skipUser()">✕</button>
+                    <button class="btn-action btn-like" onclick="likeUser()">♥</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup Section -->
+        <div id="setup" class="section" style="display: none;">
+            <div class="card">
+                <h2>🚀 Quick Setup Guide</h2>
+                
+                <div class="status-box error">
+                    <strong>❌ Node.js Not Detected</strong><br>
+                    You need to install Node.js first to run the full application.
+                </div>
+
+                <h3>Step 1: Install Node.js</h3>
+                <p>Download and install from: <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></p>
+                <p>Choose the LTS (Long Term Support) version.</p>
+
+                <h3>Step 2: Install Dependencies</h3>
+                <p>After installing Node.js, open PowerShell in this folder and run:</p>
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 10px 0;">
+npm install
+cd server
+npm install
+cd ../client
+npm install
+cd ..
+                </pre>
+
+                <h3>Step 3: Create Environment File</h3>
+                <p>Create a file named <code>.env</code> in the <code>server</code> folder:</p>
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 10px 0;">
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/quickmeet
+JWT_SECRET=quickmeet-secret-key-2024
+NODE_ENV=development
+CLIENT_URL=http://localhost:3000
+                </pre>
+
+                <h3>Step 4: Install MongoDB</h3>
+                <p><strong>Option A:</strong> Local MongoDB - <a href="https://www.mongodb.com/try/download/community" target="_blank">Download</a></p>
+                <p><strong>Option B:</strong> MongoDB Atlas (Cloud, FREE) - <a href="https://www.mongodb.com/cloud/atlas" target="_blank">Sign Up</a></p>
+
+                <h3>Step 5: Start the App</h3>
+                <p>Run this command from the root folder:</p>
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 10px 0;">
+npm run dev
+                </pre>
+
+                <h3>Step 6: Open Browser</h3>
+                <p>Go to: <strong>http://localhost:3000</strong></p>
+
+                <div class="status-box success" style="margin-top: 20px;">
+                    <strong>✅ Quick Start Scripts Available:</strong><br>
+                    - <code>CHECK_SETUP.bat</code> - Check if everything is ready<br>
+                    - <code>START_APP.bat</code> - Automatically install and start the app
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+
+        function likeUser() {
+            alert('♥ Like! In the full app, this would create a match if the other person also likes you.');
+        }
+
+        function skipUser() {
+            if (confirm('Skip this user? In the full app, an ad would show here.')) {
+                alert('User skipped. Next user loading...');
+            }
+        }
+
+        // Show home by default
+        showSection('home');
+    </script>
+</body>
+</html>
+

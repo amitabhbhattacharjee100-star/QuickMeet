@@ -39,3 +39,4 @@ coverage/
 *.pem
 .cache/
 
+client/package-lock.json

@@ -168,6 +168,36 @@ const VideoCall: React.FC<VideoCallProps> = ({ receiverId, onClose }) => {
         </div>
 
         <div className="video-call-content">
+          <div className="local-video-container">
+            <video
+              ref={localVideoRef}
+              autoPlay
+              playsInline
+              muted
+              className="local-video"
+            />
+            <div className="video-call-controls">
+              <button
+                onClick={toggleMute}
+                className={`control-btn ${isMuted ? 'muted' : ''}`}
+              >
+                {isMuted ? '🔇' : '🎤'}
+              </button>
+              <button
+                onClick={toggleVideo}
+                className={`control-btn ${isVideoOff ? 'video-off' : ''}`}
+              >
+                {isVideoOff ? '🚫' : '📹'}
+              </button>
+              <button
+                onClick={() => { endCall(); onClose(); }}
+                className="control-btn end-call"
+              >
+                📞
+              </button>
+            </div>
+          </div>
+
           <div className="remote-video-container">
             <video
               ref={remoteVideoRef}
@@ -179,37 +209,6 @@ const VideoCall: React.FC<VideoCallProps> = ({ receiverId, onClose }) => {
               <div className="call-status">Connecting...</div>
             )}
           </div>
-
-          <div className="local-video-container">
-            <video
-              ref={localVideoRef}
-              autoPlay
-              playsInline
-              muted
-              className="local-video"
-            />
-          </div>
-        </div>
-
-        <div className="video-call-controls">
-          <button
-            onClick={toggleMute}
-            className={`control-btn ${isMuted ? 'muted' : ''}`}
-          >
-            {isMuted ? '🔇' : '🎤'}
-          </button>
-          <button
-            onClick={toggleVideo}
-            className={`control-btn ${isVideoOff ? 'video-off' : ''}`}
-          >
-            {isVideoOff ? '📹' : '📹'}
-          </button>
-          <button
-            onClick={() => { endCall(); onClose(); }}
-            className="control-btn end-call"
-          >
-            📞
-          </button>
         </div>
       </div>
     </div>
